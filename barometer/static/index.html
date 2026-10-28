@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en-GB" data-tier="almanac">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#f4eee2">
+  <meta name="referrer" content="no-referrer">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="Barometer">
+  <title>Barometer</title>
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="icon" href="/static/icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/static/icon-192.png">
+  <!-- The id stops Cytoscape injecting an inline <style>, which the CSP would block. -->
+  <link rel="stylesheet" href="/static/app.css" id="__________cytoscape_stylesheet">
+  <script src="/static/vendor/cytoscape.min.js" defer></script>
+  <script type="module" src="/static/js/main.js"></script>
+</head>
+<body>
+  <header class="topbar">
+    <button class="logo" id="logo" type="button" aria-label="Barometer. Double-tap to clear the screen.">
+      <svg viewBox="0 0 48 48" aria-hidden="true" class="logo-dial">
+        <circle cx="24" cy="24" r="21" class="dial-face"/>
+        <g class="dial-ticks">
+          <line x1="24" y1="6" x2="24" y2="10"/><line x1="8.4" y1="15" x2="11.9" y2="17"/>
+          <line x1="39.6" y1="15" x2="36.1" y2="17"/><line x1="6" y1="24" x2="10" y2="24"/>
+          <line x1="42" y1="24" x2="38" y2="24"/>
+        </g>
+        <line x1="24" y1="24" x2="33" y2="13" class="dial-needle" id="logo-needle"/>
+        <circle cx="24" cy="24" r="2.6" class="dial-hub"/>
+      </svg>
+      <span class="wordmark">Barometer</span>
+    </button>
+    <div class="topbar-right">
+      <button class="lock" id="lock" type="button" hidden aria-label="Private">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="10.5" width="14" height="10" rx="2"/><path class="shackle" d="M8 10.5V7.5a4 4 0 0 1 8 0v3"/></svg>
+        <span class="lock-label">Private</span>
+      </button>
+    </div>
+  </header>
+
+  <main id="view" tabindex="-1" aria-live="polite"></main>
+
+  <nav class="tabbar" id="tabbar" hidden aria-label="Sections">
+    <a href="#/today" data-tab="today"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M4.9 19.1 7 17M17 7l2.1-2.1"/></svg><span>Today</span></a>
+    <a href="#/capture" data-tab="capture" data-owner><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20h4L19 9l-4-4L4 16z"/><path d="M13.5 6.5l4 4"/></svg><span>Note</span></a>
+    <a href="#/people" data-tab="people"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0"/><circle cx="17.5" cy="9" r="2.5"/><path d="M16 14.2a5 5 0 0 1 6 4.8"/></svg><span>People</span></a>
+    <a href="#/brief" data-tab="brief" data-deep><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h9l4 4v14H6z"/><path d="M9 11h7M9 15h7M9 7h3"/></svg><span>Brief</span></a>
+    <a href="#/map" data-tab="map" data-deep><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="6" cy="7" r="2.5"/><circle cx="18" cy="6" r="2.5"/><circle cx="12" cy="18" r="2.5"/><path d="M8.3 7.6 15.6 6.4M7.2 9.2l3.6 6.6M16.9 8.2l-3.7 7.6"/></svg><span>Map</span></a>
+    <a href="#/reflect" data-tab="reflect" data-deep><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 17l5-5 4 3 8-8"/><path d="M15 7h5v5"/></svg><span>Reflect</span></a>
+  </nav>
+
+  <div class="toast" id="toast" role="status" hidden></div>
+  <dialog id="sheet" class="sheet"></dialog>
+</body>
+</html>

@@ -1,0 +1,10 @@
+// Tailscale ACL excerpt: only your own devices can reach the Pi, and only on 443 and 22.
+// Tag the Pi with `tailscale up --advertise-tags=tag:barometer`.
+{
+  "tagOwners": { "tag:barometer": ["autogroup:admin"] },
+  "acls": [
+    // Replace with your login. Other users on the tailnet (if any) get nothing.
+    { "action": "accept", "src": ["you@example.com"], "dst": ["tag:barometer:443", "tag:barometer:22"] }
+  ],
+  "ssh": []
+}
